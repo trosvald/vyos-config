@@ -85,7 +85,7 @@ jobs:
         with:
           token: "${{ steps.generate-token.outputs.token }}"
           tag: "v${{ env.VYOS_VERSION }}"
-          artifacts: "./vyos-build/build/vyos-${{ env.VYOS_VERSION }}.iso"
+          artifacts: "./vyos-build/build/vyos-${{ env.VYOS_VERSION }}-${{ env.VYOS_ARCH }}.iso"
           artifactErrorsFailBuild: true
           body: |
             Official VyOS Changelog:
