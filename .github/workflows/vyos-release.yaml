@@ -10,7 +10,7 @@ env:
   VYOS_URL: https://github.com/vyos/vyos-build
   VYOS_BRANCH: equuleus
   VYOS_ARCH: amd64
-  VYOS_BUILD_BY: monosense-arc <647255+monosense-arc[bot]@users.noreply.github.com>
+  VYOS_BUILD_BY: 647255+monosense-arc[bot]@users.noreply.github.com
   VYOS_BUILD_TYPE: release
   #VYOS_VERSION: 1.4-rolling
 
@@ -32,16 +32,16 @@ jobs:
         with:
           app_id: "${{ secrets.TROSVALD_APP_ID }}"
           private_key: "${{ secrets.TROSVALD_APP_PRIVATE_KEY }}"
+      
+      - name: Clone vyos-build
+        run: git clone -b equuleus --single-branch ${{ env.VYOS_URL }}
 
       - name: Setup variables
         id: vars
         run: |
-          echo "VYOS_VERSION=${GITHUB_REF:10}" >> $GITHUB_ENV
+          echo "VYOS_VERSION=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
           echo "tag-name=${{ env.VYOS_VERSION }}" >> "$GITHUB_OUTPUT"
           echo "iso-name=${{ env.VYOS_VERSION }}-${{ env.VYOS_ARCH }}" >> "$GITHUB_OUTPUT"
-
-      - name: Clone vyos-build
-        run: git clone -b ${{ env.VYOS_BRANCH }} --single-branch ${{ env.VYOS_URL }}
 
       - name: Download sops deb
         uses: robinraju/release-downloader@efa4cd07bd0195e6cc65e9e30c251b49ce4d3e51 # v1.8
