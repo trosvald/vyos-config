@@ -84,7 +84,7 @@ jobs:
         uses: ncipollo/release-action@6c75be85e571768fa31b40abf38de58ba0397db5 # v1
         with:
           token: "${{ steps.generate-token.outputs.token }}"
-          tag: "v${{ steps.vars.outputs.tag-name }}"
+          tag: "v${{ env.VYOS_VERSION }}"
           artifacts: "./vyos-build/build/vyos-${{ env.VYOS_VERSION }}.iso"
           artifactErrorsFailBuild: true
           body: |
@@ -96,7 +96,7 @@ jobs:
         uses: dev-drprasad/delete-tag-and-release@5eafd8668311bf3e4d6c1e9898f32a317103de68 # v0.2.1
         with:
           github_token: "${{ steps.generate-token.outputs.token }}"
-          tag_name: "v${{ steps.vars.outputs.tag-name }}"
+          tag_name: "v${{ env.VYOS_VERSION }}"
           delete_release: true
 
       - name: Prune old releases
