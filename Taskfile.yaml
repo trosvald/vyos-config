@@ -1,0 +1,18 @@
+version: '3'
+
+tasks:
+  router:
+    cmds:
+      - task: update-remote
+      - task: update-router
+
+  update-remote:
+    internal: true
+    cmds:
+      - git status --porcelain && exit
+
+  update-router:
+    internal: true
+    cmds:
+      - ssh router -t "cd /config && git pull"
+      - ssh router -t "cd /config && ./apply-router.sh"

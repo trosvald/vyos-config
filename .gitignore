@@ -1,0 +1,21 @@
+# Ignore everything
+/*
+
+# Track certain files and directories
+!.gitignore
+!/.rules
+!/.sops.yaml
+!/apply-router.sh
+!/README.md
+!/secrets.sops.env
+!/Taskfile.yaml
+!/LICENSE
+
+# VyOS config
+!containers/
+!config-parts/
+!scripts/
+!secrets/
+
+# CI
+!.github/

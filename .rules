@@ -1,0 +1,42 @@
+#### lan ----------------------------------------------------------------------------
+--- 999-lan : Drop Invalid Packets
+
+#### trusted ------------------------------------------------------------------------
+--- 010-trusted : Accept Ping (ICMP)
+--- 999-trusted : Drop Invalid Packets
+
+#### guest --------------------------------------------------------------------------
+--- 999-guest : Drop Invalid Packets
+
+#### iot ----------------------------------------------------------------------------
+--- 010-iot : Accept HTTP Traffic (80)
+--- 020-iot : Accept RTSP Traffic (554)
+--- 030-iot : Accept WEBOS1 Traffic (3000)
+--- 040-iot : Accept WEBOS2 Traffic (3001)
+--- 999-iot : Drop Invalid Packets
+
+#### servers ------------------------------------------------------------------------
+--- 010-servers : Accept NTP Traffic (123)
+--- 020-servers : Accept SSH Traffic (22)
+--- 030-servers : Accept HTTP Traffic (80)
+--- 040-servers : Accept HTTPS Traffic (443)
+--- 050-servers : Accept PROXMOX Traffic (8006)
+--- 060-servers : Accept SAMBA Traffic (445)
+--- 070-servers : Accept MQTT Traffic (1883)
+--- 080-servers : Accept DNS Traffic (domain,domain-s)
+--- 090-servers : Accept DNS Traffic (5053)
+--- 100-servers : Accept InfluxDB Traffic (8086)
+--- 999-servers : Drop Invalid Packets
+
+#### containers ----------------------------------------------------------------------
+--- 010-containers : Accept DNS Traffic (domain,domain-s)
+--- 020-containers : Accept Omada Traffic (src-dst)
+--- 999-containers : Drop Invalid Packets
+
+#### local ---------------------------------------------------------------------------
+--- 010-local : Accept DHCP Traffic (67,68)
+--- 020-local : Accept NTP Traffic (123)
+--- 030-local : Accept SSH Traffic (22)
+--- 040-local : Accept SNMP Traffic (161)
+--- 050-local : Accept Ping (ICMP)
+--- 999-local : Drop Invalid Packets
