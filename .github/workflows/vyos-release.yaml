@@ -40,7 +40,7 @@ jobs:
         working-directory: vyos-build
         id: vars
         run: |
-          echo "VYOS_VERSION=$(git describe --tags --abbrev=0)" >> "$GITHUB_OUTPUT"
+          echo "VYOS_VERSION=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
           echo "tag-name=${{ env.VYOS_VERSION }}" >> "$GITHUB_OUTPUT"
           echo "iso-name=${{ env.VYOS_VERSION }}-${{ env.VYOS_ARCH }}" >> "$GITHUB_OUTPUT"
 
@@ -62,7 +62,7 @@ jobs:
               --build-by ${{ env.VYOS_BUILD_BY }} \
               --build-type ${{ env.VYOS_BUILD_TYPE }} \
               --build-comment "VyOS LTS with additional packages" \
-              --version ${{ steps.vars.outputs.tag-name }} \
+              --version ${{ env.VYOS_VERSION }} \
               --custom-package "git nano age jo moreutils tree"
 
       - name: Make ISO
