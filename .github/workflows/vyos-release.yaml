@@ -63,7 +63,7 @@ jobs:
               --build-type ${{ env.VYOS_BUILD_TYPE }} \
               --build-comment "VyOS LTS with additional packages" \
               --version ${{ env.VYOS_VERSION }} \
-              --custom-package "git nano age jo moreutils tree"
+              --custom-package "git nano jo moreutils tree"
 
       - name: Make ISO
         working-directory: vyos-build
