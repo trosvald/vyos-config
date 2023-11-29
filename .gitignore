@@ -5,7 +5,8 @@
 !.gitignore
 !/.rules
 !/.sops.yaml
-!/apply-router.sh
+!/apply-config.sh
+!/bootstrap.sh
 !/README.md
 !/secrets.sops.env
 !/Taskfile.yaml
@@ -14,6 +15,7 @@
 # VyOS config
 !containers/
 !config-parts/
+!bootstrap/
 !scripts/
 !secrets/
 
