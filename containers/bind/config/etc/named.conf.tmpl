@@ -1,0 +1,69 @@
+# Only define the known VLAN subnets as trusted
+acl "trusted" {
+  172.16.10.0/24;   # MANAGEMENT
+  172.16.11.0/24;   # INFRA
+  172.16.12.0/24;   # HOME
+  172.16.13.0/24;   # IoT
+  172.16.14.0/24;   # CCTV
+  172.16.16.0/24;   # CONTAINERS
+};
+
+options {
+  directory "/var/cache/bind";
+  listen-on { 127.0.0.1; 172.16.16.3; };
+
+  allow-recursion {
+    trusted;
+  };
+  allow-transfer {
+    none;
+  };
+  allow-update {
+    none;
+  };
+};
+
+logging {
+  channel stdout {
+    stderr;
+    severity info;
+    print-category yes;
+    print-severity yes;
+    print-time yes;
+  };
+  category security { stdout; };
+  category dnssec   { stdout; };
+  category default  { stdout; };
+};
+
+include "/etc/bind/rndc.key";
+include "/etc/bind/externaldns.key";
+include "/etc/bind/ddnsupdate.key";
+
+controls {
+  inet 127.0.0.1 allow { localhost; } keys { "rndc-key"; };
+};
+
+zone "monosense.io." {
+  type master;
+  file "/var/lib/bind/db.monosense.io";
+  journal "/var/cache/bind/db.monosense.io.jnl";
+  allow-transfer {
+    key "externaldns";
+  };
+  update-policy {
+    grant externaldns zonesub ANY;
+    grant ddnsupdate zonesub ANY;
+    grant * self * A;
+  };
+};
+
+zone "16.172.in-addr.arpa." {
+  type master;
+  file "/var/lib/bind/db.16.172.in-addr.arpa";
+  journal "/var/cache/bind/db.16.172.in-addr.arpa.jnl";
+  update-policy {
+    grant ddnsupdate zonesub ANY;
+    grant * self * A;
+  };
+};

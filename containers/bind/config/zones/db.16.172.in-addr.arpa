@@ -1,0 +1,92 @@
+; Make sure to update the epoch time in the SOA records so coreDNS picks up the changes automatically
+; https://www.epochconverter.com/
+
+; SOA Records
+$TTL 3600
+$ORIGIN 16.172.in-addr.arpa.
+@ 3600 IN SOA ns1.monosense.io. ns1.monosense.io. (
+  1697788975         ; serial number (epoch timestamp)
+  7200               ; refresh period
+  3600               ; retry period
+  1209600            ; expire time
+  3600               ; minimum ttl
+)
+
+; NS Records
+@                   IN  NS ns1.monosense.io.
+
+; Reset origin
+$ORIGIN in-addr.arpa.
+
+; MANAGEMENT
+254.10.16.172       IN  PTR vg.monosense.io.
+1.10.16.172         IN  PTR core.monosense.io.
+2.10.16.172         IN  PTR poe.monosense.io.
+3.10.16.172         IN  PTR tor01.monosense.io.
+4.10.16.172         IN  PTR tor02.monosense.io.
+5.10.16.172         IN  PTR bsw01.monosense.io.
+6.10.16.172         IN  PTR oap01.monosense.io.
+7.10.16.172         IN  PTR oap02.monosense.io.
+8.10.16.172         IN  PTR iap01.monosense.io.
+9.10.16.172         IN  PTR iap02.monosense.io.
+10.10.16.172        IN  PTR vg-ipmi.monosense.io.
+11.10.16.172        IN  PTR wlc.monosense.io.
+12.10.16.172        IN  PTR san-ipmi.monosense.io.
+
+; INFRA
+1.11.16.172         IN  PTR san.monosense.io.
+2.11.16.172         IN  PTR csi.monosense.io.
+3.11.16.172		    IN  PTR registry.monosense.io.
+4.11.16.172         IN  PTR m910q01.monosense.io.
+5.11.16.172         IN  PTR m910q02.monosense.io.
+6.11.16.172         IN  PTR m910q03.monosense.io.
+7.11.16.172         IN  PTR m920x01.monosense.io.
+8.11.16.172         IN  PTR m920x02.monosense.io.
+10.11.16.172        IN  PTR k8s-m0.monosense.io.
+11.11.16.172        IN  PTR k8s-m1.monosense.io.
+12.11.16.172        IN  PTR k8s-m2.monosense.io.
+13.11.16.172        IN  PTR k8s-w0.monosense.io.
+14.11.16.172        IN  PTR k8s-w1.monosense.io.
+15.11.16.172        IN  PTR k8s-w2.monosense.io.
+16.11.16.172        IN  PTR k8s-w3.monosense.io.
+
+; HOME
+; start from .100-199
+248.12.16.172       IN  PTR smarthub.monosense.io.
+100.12.16.172       IN  PTR printer.monosense.io.
+
+; IoT
+; start from .100-199
+100.13.16.172       IN   PTR em00.monosense.io.
+101.13.16.172       IN   PTR em01.monosense.io.
+102.13.16.172       IN   PTR em02.monosense.io.
+103.13.16.172       IN   PTR em03.monosense.io.
+104.13.16.172       IN   PTR em04.monosense.io.
+105.13.16.172       IN   PTR em05.monosense.io.
+106.13.16.172       IN   PTR office-ups1-plug.monosense.io.
+107.13.16.172       IN   PTR office-ups2-plug.monosense.io.
+108.13.16.172       IN   PTR office-ups3-plug.monosense.io.
+109.13.16.172       IN   PTR backyard-water-pump-plug.monosense.io.
+110.13.16.172       IN   PTR backyard-booster-pump-plug.monosense.io.
+111.13.16.172       IN   PTR masterbedroom-plug.monosense.io.
+112.13.16.172       IN   PTR farezzbedroom-plug.monosense.io.
+113.13.16.172       IN   PTR office-rack-fans-plug.monosense.io.
+114.13.16.172       IN   PTR guestroom-led-strip.monosense.io.
+
+; CCTV
+; start from .100-199
+100.14.16.172       IN  PTR nvr.monosense.io.
+101.14.16.172       IN  PTR ipc01.monosense.io.
+102.14.16.172       IN  PTR ipc02.monosense.io.
+103.14.16.172       IN  PTR ipc03.monosense.io.
+104.14.16.172       IN  PTR ipc04.monosense.io.
+105.14.16.172       IN  PTR ipc05.monosense.io.
+
+; CONTAINERS
+2.16.16.172         IN  PTR adguard.monosense.io.
+3.16.16.172         IN  PTR ns1.monosense.io.
+4.16.16.172         IN  PTR cluster-0.monosense.io.
+5.16.16.172         IN  PTR ns.monosense.io.
+6.16.16.172         IN  PTR omada.monosense.io.
+7.16.16.172         IN  PTR onepassword-connect.monosense.io.
+8.16.16.172		    IN  PTR onepassword-sync.monosense.io.
