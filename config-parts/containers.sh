@@ -94,7 +94,7 @@ set container name node-exporter volume sysfs mode 'ro'
 set container name node-exporter volume sysfs source '/sys'
 
 set container name omada environment TZ value 'Asia/Jakarta'
-set container name omada image 'docker.io/mbentley/omada-controller:5.12'
+set container name omada image 'docker.io/mbentley/omada-controller:5.13'
 set container name omada memory '0'
 set container name omada network containers address '172.16.16.6'
 set container name omada restart 'on-failure'
