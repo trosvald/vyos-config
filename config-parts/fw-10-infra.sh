@@ -36,16 +36,11 @@ set firewall ipv4 name infra-home rule 999 state invalid 'enable'
 set firewall ipv4 name infra-iot default-action 'drop'
 set firewall ipv4 name infra-iot description 'From infra to iot'
 set firewall ipv4 name infra-iot enable-default-log
-### --- 010-iot : Accept HTTP Traffic (80)
+### --- 010-iot : Accept HTTP/HTTPS Traffic (80,443)
 set firewall ipv4 name infra-iot rule 10 action 'accept'
-set firewall ipv4 name infra-iot rule 10 description 'Rule: Accept_HTTP'
-set firewall ipv4 name infra-iot rule 10 destination port '80'
+set firewall ipv4 name infra-iot rule 10 description 'Rule: Accept_HTTP_HTTPS'
+set firewall ipv4 name infra-iot rule 10 destination port 'http,https'
 set firewall ipv4 name infra-iot rule 10 protocol 'tcp'
-### --- 020-iot : Accept HTTPS Traffic (443)
-set firewall ipv4 name infra-iot rule 20 action 'accept'
-set firewall ipv4 name infra-iot rule 20 description 'Rule: Accept_HTTPS'
-set firewall ipv4 name infra-iot rule 20 destination port '443'
-set firewall ipv4 name infra-iot rule 20 protocol 'tcp'
 ### --- 999-iot : Drop Invalid Packets
 set firewall ipv4 name infra-iot rule 999 action 'drop'
 set firewall ipv4 name infra-iot rule 999 description 'Rule: Drop_Invalid'
@@ -56,16 +51,11 @@ set firewall ipv4 name infra-iot rule 999 state invalid 'enable'
 set firewall ipv4 name infra-cctv default-action 'drop'
 set firewall ipv4 name infra-cctv description 'From infra to cctv'
 set firewall ipv4 name infra-cctv enable-default-log
-### --- 010-cctv : Accept HTTP Traffic (80)
+### --- 010-cctv : Accept HTTP/HTTPS Traffic (80,443)
 set firewall ipv4 name infra-cctv rule 10 action 'accept'
-set firewall ipv4 name infra-cctv rule 10 description 'Rule: Accept_HTTP'
-set firewall ipv4 name infra-cctv rule 10 destination port '80'
+set firewall ipv4 name infra-cctv rule 10 description 'Rule: Accept_HTTP_HTTPS'
+set firewall ipv4 name infra-cctv rule 10 destination port 'http,https'
 set firewall ipv4 name infra-cctv rule 10 protocol 'tcp'
-### --- 020-cctv : Accept HTTPS Traffic (443)
-set firewall ipv4 name infra-cctv rule 20 action 'accept'
-set firewall ipv4 name infra-cctv rule 20 description 'Rule: Accept_HTTPS'
-set firewall ipv4 name infra-cctv rule 20 destination port '443'
-set firewall ipv4 name infra-cctv rule 20 protocol 'tcp'
 ### --- 999-cctv : Drop Invalid Packets
 set firewall ipv4 name infra-cctv rule 999 action 'drop'
 set firewall ipv4 name infra-cctv rule 999 description 'Rule: Drop_Invalid'

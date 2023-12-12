@@ -94,7 +94,7 @@ set container name node-exporter volume sysfs mode 'ro'
 set container name node-exporter volume sysfs source '/sys'
 
 set container name omada environment TZ value 'Asia/Jakarta'
-set container name omada image 'docker.io/mbentley/omada-controller:5.12'
+set container name omada image 'docker.io/mbentley/omada-controller:5.13'
 set container name omada memory '0'
 set container name omada network containers address '172.16.16.6'
 set container name omada restart 'on-failure'
@@ -131,7 +131,6 @@ set container name onepassword-sync volume data mode 'rw'
 set container name onepassword-sync volume data source '/tmp/onepassword/data'
 
 set container name speedtest-exporter allow-host-networks
-set container name speedtest-exporter environment SPEEDTEST_SERVER value '5168'
 set container name speedtest-exporter image 'ghcr.io/miguelndecarvalho/speedtest-exporter:v3.5.4'
 set container name speedtest-exporter memory '0'
 set container name speedtest-exporter restart 'on-failure'
