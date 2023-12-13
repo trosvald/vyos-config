@@ -101,7 +101,7 @@ set service dhcp-server shared-network-name IOT subnet 172.16.13.0/24 static-map
 set service dhcp-server shared-network-name IOT subnet 172.16.13.0/24 static-mapping farezzbedroom-plug mac-address '10:d5:61:d2:61:b9'
 set service dhcp-server shared-network-name IOT subnet 172.16.13.0/24 static-mapping guestroom-led-strip ip-address '172.16.13.114'
 set service dhcp-server shared-network-name IOT subnet 172.16.13.0/24 static-mapping guestroom-led-strip mac-address '40:f5:20:1f:5f:06'
-set service dhcp-server shared-network-name IOT subnet 172.16.13.0/24 static-mapping livingroom-smarttv-tcl ip-address '172.16.13.115'
+set service dhcp-server shared-network-name IOT subnet 172.16.13.0.opnsense.pool.ntp.org0/24 static-mapping livingroom-smarttv-tcl ip-address '172.16.13.115'
 set service dhcp-server shared-network-name IOT subnet 172.16.13.0/24 static-mapping livingroom-smarttv-tcl mac-address 'c0:79:82:8e:a3:10'
 set service dhcp-server shared-network-name IOT subnet 172.16.13.0/24 static-mapping masterbedroom-plug ip-address '172.16.13.111'
 set service dhcp-server shared-network-name IOT subnet 172.16.13.0/24 static-mapping masterbedroom-plug mac-address '10:d5:61:ca:92:9a'

@@ -12,9 +12,8 @@ set service ntp listen-address '172.16.10.254'
 
 # NTP Server
 delete service ntp server
-set service ntp server ntp.bsn.go.id prefer
 set service ntp server time.cloudflare.com
-set service ntp server time.google.com
+set service ntp server time.google.com prefer
 
 # SSH Service
 set service ssh disable-password-authentication

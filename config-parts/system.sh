@@ -15,6 +15,7 @@ set system login user vyos authentication public-keys monosense-okd type 'ssh-ed
 set system name-server '172.16.16.2'
 set system option time-format '24-hour'
 set system sysctl parameter net.core.rmem_max value '2500000'
+set system sysctl parameter net.core.wmem_max value '2500000'
 set system syslog global facility all level 'info'
 set system syslog global facility local7 level 'debug'
 set system syslog host 10.11.11.11 facility kern level 'warning'
