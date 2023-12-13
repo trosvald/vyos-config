@@ -78,7 +78,7 @@ git branch --set-upstream-to=origin/"$repoBranch" "$repoBranch" -q
 
 echo "Loading secrets into ENV vars..."
 if [ -f "/config/secrets.sops.env" ]; then
-  export SOPS_AGE_KEY_FILE=/config/secrets/age.key
+  export SOPS_AGE_KEY_FILE=/config/secrets/keys.txt
 
   mapfile environmentAsArray < <(
     sops --decrypt "/config/secrets.sops.env" |
