@@ -6,7 +6,7 @@ set container network containers description 'Network for containers'
 set container network containers prefix '172.16.16.0/24'
 
 set container name adguard cap-add 'net-bind-service'
-set container name adguard image 'docker.io/adguard/adguardhome:v0.107.39'
+set container name adguard image 'docker.io/adguard/adguardhome:v0.107.43'
 set container name adguard memory '0'
 set container name adguard network containers address '172.16.16.2'
 set container name adguard restart 'on-failure'
