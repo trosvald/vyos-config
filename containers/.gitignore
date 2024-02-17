@@ -1,0 +1,12 @@
+# Ignore everything
+/*
+
+# Track certain files and directories
+!.gitignore
+
+!/bind/
+!/blocky/
+!/dnsdist/
+!/haproxy/
+!/unifi/
+!/vector-agent/

@@ -1,0 +1,32 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
+    "github>trosvald/renovate-config",
+    "github>trosvald/renovate-config:automerge-github-actions",
+  ],
+  regexManagers: [
+    {
+      description: ["Generic Docker image Regex manager"],
+      fileMatch: ["config-parts/.+\\.sh$"],
+      matchStrings: [
+        "set container name .* image '?(?<depName>.*?):(?<currentValue>[^'\n]*=?)'?",
+      ],
+      datasourceTemplate: "docker",
+    },
+  ],
+  packageRules: [
+    {
+      description: "1Password Connect images",
+      groupName: "1password-connect",
+      matchPackageNames: [
+        "docker.io/1password/connect-sync",
+        "docker.io/1password/connect-api",
+      ],
+      matchDatasources: ["docker"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      separateMinorPatch: true,
+    },
+  ],
+}
