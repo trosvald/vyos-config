@@ -7,3 +7,4 @@
 !/config/
 /config/*
 !/config/dnsdist.conf
+!/config/dnsdist.conf.tmpl

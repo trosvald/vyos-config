@@ -7,3 +7,4 @@
 !/config/
 /config/*
 !/config/config.yml
+!/config/config.yml.tmpl

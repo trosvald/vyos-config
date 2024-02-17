@@ -5,32 +5,18 @@ set container network containers description 'Network for containers'
 set container network containers prefix '172.16.16.0/24'
 
 # Adguard
-# set container name adguard cap-add 'net-bind-service'
-# set container name adguard image 'docker.io/adguard/adguardhome:v0.107.39'
-# set container name adguard memory '0'
-# set container name adguard network containers address '172.16.16.2'
-# set container name adguard restart 'on-failure'
-# set container name adguard shared-memory '0'
-# set container name adguard volume config destination '/opt/adguardhome/conf'
-# set container name adguard volume config mode 'rw'
-# set container name adguard volume config source '/config/containers/adguard/config'
-# set container name adguard volume work destination '/opt/adguardhome/work'
-# set container name adguard volume work mode 'rw'
-# set container name adguard volume work source '/config/containers/adguard/work'
-
-# SMTP Relay
-set container name smtp-relay environment SMTP_DOMAIN value "${SECRET_DOMAIN}"
-set container name smtp-relay environment SMTP_PASSWORD value "${SECRET_SMTP_PASSWORD}"
-set container name smtp-relay environment SMTP_PORT value "${SECRET_SMTP_PORT}"
-set container name smtp-relay environment SMTP_SERVER value "${SECRET_SMTP_SERVER}"
-set container name smtp-relay environment SMTP_USERNAME value "${SECRET_SMTP_USERNAME}"
-set container name smtp-relay image 'ghcr.io/foxcpp/maddy:0.6.3'
-set container name smtp-relay memory '0'
-set container name smtp-relay network containers address '172.16.16.10'
-set container name smtp-relay shared-memory '0'
-set container name smtp-relay volume smtp-relay-config destination '/data/maddy.conf'
-set container name smtp-relay volume smtp-relay-config mode 'ro'
-set container name smtp-relay volume smtp-relay-config source '/config/containers/smtp-relay/config/maddy.conf'
+set container name adguard cap-add 'net-bind-service'
+set container name adguard image 'docker.io/adguard/adguardhome:v0.107.39'
+set container name adguard memory '0'
+set container name adguard network containers address '172.16.16.2'
+set container name adguard restart 'on-failure'
+set container name adguard shared-memory '0'
+set container name adguard volume config destination '/opt/adguardhome/conf'
+set container name adguard volume config mode 'rw'
+set container name adguard volume config source '/config/containers/adguard/config'
+set container name adguard volume work destination '/opt/adguardhome/work'
+set container name adguard volume work mode 'rw'
+set container name adguard volume work source '/config/containers/adguard/work'
 
 # Bind9
 set container name bind cap-add 'net-bind-service'
@@ -129,10 +115,37 @@ set container name blocky volume config destination '/app/config.yml'
 set container name blocky volume config mode 'ro'
 set container name blocky volume config source '/config/containers/blocky/config/config.yml'
 
+# SMTP Relay
+set container name smtp-relay environment SMTP_DOMAIN value "${SECRET_DOMAIN}"
+set container name smtp-relay environment SMTP_PASSWORD value "${SECRET_SMTP_PASSWORD}"
+set container name smtp-relay environment SMTP_PORT value "${SECRET_SMTP_PORT}"
+set container name smtp-relay environment SMTP_SERVER value "${SECRET_SMTP_SERVER}"
+set container name smtp-relay environment SMTP_USERNAME value "${SECRET_SMTP_USERNAME}"
+set container name smtp-relay image 'ghcr.io/foxcpp/maddy:0.6.3'
+set container name smtp-relay memory '0'
+set container name smtp-relay network containers address '172.16.16.10'
+set container name smtp-relay shared-memory '0'
+set container name smtp-relay volume smtp-relay-config destination '/data/maddy.conf'
+set container name smtp-relay volume smtp-relay-config mode 'ro'
+set container name smtp-relay volume smtp-relay-config source '/config/containers/smtp-relay/config/maddy.conf'
+
+# udp-broadcast-relay-mdns
+set container name udp-broadcast-relay-mdns allow-host-networks
+set container name udp-broadcast-relay-mdns cap-add 'net-raw'
+set container name udp-broadcast-relay-mdns environment CFG_DEV value 'bond0.1612;bond0.1613;bond0.1614'
+set container name udp-broadcast-relay-mdns environment CFG_ID value '2'
+set container name udp-broadcast-relay-mdns environment CFG_MULTICAST value '224.0.0.251'
+set container name udp-broadcast-relay-mdns environment CFG_PORT value '5353'
+set container name udp-broadcast-relay-mdns environment SEPARATOR value ';'
+set container name udp-broadcast-relay-mdns image 'ghcr.io/onedr0p/udp-broadcast-relay-redux:1.0.28'
+set container name udp-broadcast-relay-mdns memory '0'
+set container name udp-broadcast-relay-mdns restart 'on-failure'
+set container name udp-broadcast-relay-mdns shared-memory '0'
+
 # Cloudflare DDNS
 set container name cloudflare-ddns allow-host-networks
 set container name cloudflare-ddns environment CF_API_TOKEN value "${SECRET_CLOUDFLARE_DYNDNS_TOKEN}"
-set container name cloudflare-ddns environment DOMAINS value 'ipv4.monosense.io,ipv4.tripranata.com'
+set container name cloudflare-ddns environment DOMAINS value "${SECRET_CF_CNAME}"
 set container name cloudflare-ddns environment IP4_PROVIDER value 'local'
 set container name cloudflare-ddns environment IP6_PROVIDER value 'none'
 set container name cloudflare-ddns environment PGID value '1000'
