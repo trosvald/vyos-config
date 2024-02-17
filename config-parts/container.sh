@@ -19,7 +19,7 @@ set container network containers prefix '172.16.16.0/24'
 # set container name adguard volume work source '/config/containers/adguard/work'
 
 # SMTP Relay
-set container name smtp-relay environment SMTP_DOMAIN value "${SECRET_SMTP_DOMAIN}"
+set container name smtp-relay environment SMTP_DOMAIN value "${SECRET_DOMAIN}"
 set container name smtp-relay environment SMTP_PASSWORD value "${SECRET_SMTP_PASSWORD}"
 set container name smtp-relay environment SMTP_PORT value "${SECRET_SMTP_PORT}"
 set container name smtp-relay environment SMTP_SERVER value "${SECRET_SMTP_SERVER}"

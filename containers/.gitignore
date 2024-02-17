@@ -4,9 +4,10 @@
 # Track certain files and directories
 !.gitignore
 
+!/adguard/
 !/bind/
 !/blocky/
 !/dnsdist/
 !/haproxy/
-!/unifi/
-!/vector-agent/
+!/omada/
+!/smtp-relay
