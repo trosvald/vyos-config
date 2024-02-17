@@ -130,19 +130,6 @@ set container name smtp-relay volume smtp-relay-config destination '/data/maddy.
 set container name smtp-relay volume smtp-relay-config mode 'ro'
 set container name smtp-relay volume smtp-relay-config source '/config/containers/smtp-relay/config/maddy.conf'
 
-# udp-broadcast-relay-mdns
-set container name udp-broadcast-relay-mdns allow-host-networks
-set container name udp-broadcast-relay-mdns cap-add 'net-raw'
-set container name udp-broadcast-relay-mdns environment CFG_DEV value 'bond0.1612;bond0.1613;bond0.1614'
-set container name udp-broadcast-relay-mdns environment CFG_ID value '2'
-set container name udp-broadcast-relay-mdns environment CFG_MULTICAST value '224.0.0.251'
-set container name udp-broadcast-relay-mdns environment CFG_PORT value '5353'
-set container name udp-broadcast-relay-mdns environment SEPARATOR value ';'
-set container name udp-broadcast-relay-mdns image 'ghcr.io/onedr0p/udp-broadcast-relay-redux:1.0.28'
-set container name udp-broadcast-relay-mdns memory '0'
-set container name udp-broadcast-relay-mdns restart 'on-failure'
-set container name udp-broadcast-relay-mdns shared-memory '0'
-
 # Cloudflare DDNS
 set container name cloudflare-ddns allow-host-networks
 set container name cloudflare-ddns environment CF_API_TOKEN value "${SECRET_CLOUDFLARE_DYNDNS_TOKEN}"
