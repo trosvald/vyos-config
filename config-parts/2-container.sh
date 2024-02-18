@@ -56,7 +56,7 @@ set container name haproxy-k8s-api volume config source '/config/containers/hapr
 set container name dnsdist arguments '--log-timestamps'
 set container name dnsdist cap-add 'net-bind-service'
 set container name dnsdist environment TZ value 'Asia/Jakarta'
-set container name dnsdist image 'docker.io/powerdns/dnsdist-18:1.8.2'
+set container name dnsdist image 'docker.io/powerdns/dnsdist-18:1.8.3'
 set container name dnsdist memory '0'
 set container name dnsdist network containers address '172.16.16.5'
 set container name dnsdist restart 'on-failure'
