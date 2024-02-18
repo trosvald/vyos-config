@@ -66,7 +66,7 @@ set firewall zone servers from containers firewall name 'containers-servers'
 set firewall zone servers from mgmt firewall name 'mgmt-servers'
 set firewall zone servers from cctv firewall name 'cctv-servers'
 set firewall zone servers from wan firewall name 'wan-servers'
-set firewall zone servers interface 'bond1'
+set firewall zone servers interface 'bond0.1611'
 
 # iot Zone
 set firewall zone iot default-action 'drop'
