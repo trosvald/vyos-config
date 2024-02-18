@@ -46,3 +46,5 @@ set system time-zone 'Asia/Jakarta'
 set system domain-name "${SECRET_DOMAIN}"
 set system host-name 'vg'
 set system option time-format '24-hour'
+
+set service ssh port '22'
