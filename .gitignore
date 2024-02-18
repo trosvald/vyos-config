@@ -10,11 +10,10 @@
 !/LICENSE
 !/README.md
 
-# VyOS config
-!bootstrap/
-!config-parts/
-!containers/
-!scripts/
+# VyOS bootstrap config
+!/bootstrap/
+/bootstrap/*
+!/bootstrap/*.sh
 
 # CI
 !.github/
