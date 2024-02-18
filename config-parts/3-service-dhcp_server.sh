@@ -1,7 +1,7 @@
 #!/bin/vbash
 
 set service dhcp-server dynamic-dns-update
-set service dhcp-server global-parameters 'option omada-address code 138 = ip-address;'
+#set service dhcp-server global-parameters 'option omada-address code 138 = ip-address;'
 set service dhcp-server global-parameters 'key ddnsupdate { algorithm hmac-sha256; secret ${SECRET_DDNS_UPDATE_KEY}; };'
 set service dhcp-server global-parameters 'zone ${SECRET_DOMAIN}. { primary 172.16.16.3; key ddnsupdate; }'
 set service dhcp-server global-parameters 'ddns-domainname &quot;${SECRET_DOMAIN}.&quot;;'
@@ -132,4 +132,4 @@ set service dhcp-server shared-network-name MGMT subnet 172.16.10.0/24 static-ma
 set service dhcp-server shared-network-name MGMT subnet 172.16.10.0/24 static-mapping tor01 mac-address '28:87:ba:b1:3e:0d'
 set service dhcp-server shared-network-name MGMT subnet 172.16.10.0/24 static-mapping tor02 ip-address '172.16.10.4'
 set service dhcp-server shared-network-name MGMT subnet 172.16.10.0/24 static-mapping tor02 mac-address '28:87:ba:b1:3e:0b'
-set service dhcp-server shared-network-name MGMT subnet 172.16.10.0/24 subnet-parameters 'option omada-address 172.16.16.6;'
+#set service dhcp-server shared-network-name MGMT subnet 172.16.10.0/24 subnet-parameters 'option omada-address 172.16.16.6;'

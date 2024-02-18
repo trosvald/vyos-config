@@ -10,4 +10,4 @@
 !/dnsdist/
 !/haproxy/
 !/omada/
-!/smtp-relay
+!/smtp-relay/
