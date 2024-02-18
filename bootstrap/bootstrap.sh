@@ -1,4 +1,5 @@
 #!/bin/vbash
+# shellcheck disable=all
 
 set interfaces ethernet eth0 hw-id '98:fa:9b:19:be:d9'
 set interfaces ethernet eth1 hw-id 'ec:0d:9a:02:85:30'
@@ -32,3 +33,16 @@ set interfaces wireguard wg01 peer monosense allowed-ips '10.12.12.2/32'
 set interfaces wireguard wg01 peer monosense public-key "${SECRET_WIREGUARD_PUBLIC_KEY}"
 set interfaces wireguard wg01 port '51820'
 set interfaces wireguard wg01 private-key "${SECRET_WIREGUARD_PRIVATE_KEY}"
+
+set nat source rule 100 description 'LAN -> WAN'
+set nat source rule 100 destination address '0.0.0.0/0'
+set nat source rule 100 outbound-interface name 'pppoe0'
+set nat source rule 100 translation address 'masquerade'
+
+set system name-server '203.142.82.222'
+set system name-server '203.142.84.222'
+set system time-zone 'Asia/Jakarta'
+
+set system domain-name "${SECRET_DOMAIN}"
+set system host-name 'vg'
+set system option time-format '24-hour'

@@ -5,6 +5,7 @@
 !.gitignore
 !/.sops.yaml
 !/apply-config.sh
+!/bootstrap.sh
 !/secrets.sops.env
 !/LICENSE
 !/README.md
