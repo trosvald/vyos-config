@@ -122,7 +122,7 @@ set container name smtp-relay environment SMTP_PASSWORD value "${SECRET_SMTP_PAS
 set container name smtp-relay environment SMTP_PORT value "${SECRET_SMTP_PORT}"
 set container name smtp-relay environment SMTP_SERVER value "${SECRET_SMTP_SERVER}"
 set container name smtp-relay environment SMTP_USERNAME value "${SECRET_SMTP_USERNAME}"
-set container name smtp-relay image 'ghcr.io/foxcpp/maddy:0.6.3'
+set container name smtp-relay image 'ghcr.io/foxcpp/maddy:0.7.1'
 set container name smtp-relay memory '0'
 set container name smtp-relay network containers address '172.16.16.10'
 set container name smtp-relay shared-memory '0'
