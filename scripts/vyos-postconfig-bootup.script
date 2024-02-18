@@ -11,14 +11,14 @@ if [ -d "/home/vyos" ]; then
 [safe]
   directory = /config
 [user]
-  email = me@bjw-s.dev
-  name = Bernd Schorgers
+  email = eko.pur25@gmail.com
+  name = trosvald
 END
   chown vyos:users /home/vyos/.gitconfig
 
   tee -a /home/vyos/.bash_aliases <<END >/dev/null
 export SOPS_AGE_KEY_FILE=/config/secrets/age.key
-export GIT_SSH_COMMAND="ssh -i /config/secrets/id_ed25519"
+export GIT_SSH_COMMAND="ssh -i /config/secrets/id_rsa"
 export VISUAL=vi
 export EDITOR=vi
 END
@@ -28,5 +28,8 @@ fi
 # Disable EEE on network interfaces as a workaround to i225/i226 issues
 while read -r interface
 do
-  sudo ethtool --set-eee "${interface}" eee off
-done < <(ls -l /sys/class/net/*/device/driver/module | cut -d/ -f5)
+  sudo ethtool -G eth0 tx 4096 rx 4096
+  sudo ethtool -G eth1 tx 8192 rx 8192
+  sudo ethtool -G eth2 tx 8192 rx 8192
+done
+#done < <(ls -l /sys/class/net/*/device/driver/module | cut -d/ -f5)
