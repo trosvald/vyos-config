@@ -2,9 +2,9 @@
 ; https://www.epochconverter.com/
 
 ; SOA Records
-$${escapeThis}TTL 3600
-$${escapeThis}ORIGIN 16.172.in-addr.arpa.
-@ 3600 IN SOA ns1.${SECRET_DOMAIN}. ns1.${SECRET_DOMAIN}. (
+$TTL 3600
+$ORIGIN 16.172.in-addr.arpa.
+@ 3600 IN SOA ns1.monosense.io. ns1.monosense.io. (
   1697788975         ; serial number (epoch timestamp)
   7200               ; refresh period
   3600               ; retry period
@@ -13,83 +13,83 @@ $${escapeThis}ORIGIN 16.172.in-addr.arpa.
 )
 
 ; NS Records
-@                   IN  NS ns1.${SECRET_DOMAIN}.
+@                   IN  NS ns1.monosense.io.
 
 ; Reset origin
-$${escapeThis}ORIGIN in-addr.arpa.
+$ORIGIN in-addr.arpa.
 
 ; MANAGEMENT
-254.10.16.172       IN  PTR vg.${SECRET_DOMAIN}.
-1.10.16.172         IN  PTR core.${SECRET_DOMAIN}.
-2.10.16.172         IN  PTR poe.${SECRET_DOMAIN}.
-3.10.16.172         IN  PTR tor01.${SECRET_DOMAIN}.
-4.10.16.172         IN  PTR tor02.${SECRET_DOMAIN}.
-5.10.16.172         IN  PTR bsw01.${SECRET_DOMAIN}.
-6.10.16.172         IN  PTR oap01.${SECRET_DOMAIN}.
-7.10.16.172         IN  PTR oap02.${SECRET_DOMAIN}.
-8.10.16.172         IN  PTR iap01.${SECRET_DOMAIN}.
-9.10.16.172         IN  PTR iap02.${SECRET_DOMAIN}.
-11.10.16.172        IN  PTR wlc.${SECRET_DOMAIN}.
-12.10.16.172        IN  PTR san-ipmi.${SECRET_DOMAIN}.
-13.10.16.172        IN  PTR mattermost.${SECRET_DOMAIN}.
-15.10.16.172        IN  PTR nas.${SECRET_DOMAIN}.
-16.10.16.172        IN  PTR m920x03.${SECRET_DOMAIN}.
-20.10.16.172        IN  PTR truenas.${SECRET_DOMAIN}.
+254.10.16.172       IN  PTR vg.monosense.io.
+1.10.16.172         IN  PTR core.monosense.io.
+2.10.16.172         IN  PTR poe.monosense.io.
+3.10.16.172         IN  PTR tor01.monosense.io.
+4.10.16.172         IN  PTR tor02.monosense.io.
+5.10.16.172         IN  PTR bsw01.monosense.io.
+6.10.16.172         IN  PTR oap01.monosense.io.
+7.10.16.172         IN  PTR oap02.monosense.io.
+8.10.16.172         IN  PTR iap01.monosense.io.
+9.10.16.172         IN  PTR iap02.monosense.io.
+11.10.16.172        IN  PTR wlc.monosense.io.
+12.10.16.172        IN  PTR san-ipmi.monosense.io.
+13.10.16.172        IN  PTR mattermost.monosense.io.
+15.10.16.172        IN  PTR nas.monosense.io.
+16.10.16.172        IN  PTR m920x03.monosense.io.
+20.10.16.172        IN  PTR truenas.monosense.io.
 
 ; INFRA
-1.11.16.172         IN  PTR san.${SECRET_DOMAIN}.
-2.11.16.172         IN  PTR csi.${SECRET_DOMAIN}.
-4.11.16.172         IN  PTR m910q01.${SECRET_DOMAIN}.
-5.11.16.172         IN  PTR m910q02.${SECRET_DOMAIN}.
-6.11.16.172         IN  PTR m910q03.${SECRET_DOMAIN}.
-7.11.16.172         IN  PTR m920x01.${SECRET_DOMAIN}.
-8.11.16.172         IN  PTR m920x02.${SECRET_DOMAIN}.
-10.11.16.172        IN  PTR k8s-m0.${SECRET_DOMAIN}.
-11.11.16.172        IN  PTR k8s-m1.${SECRET_DOMAIN}.
-12.11.16.172        IN  PTR k8s-m2.${SECRET_DOMAIN}.
-13.11.16.172        IN  PTR k8s-w0.${SECRET_DOMAIN}.
-14.11.16.172        IN  PTR k8s-w1.${SECRET_DOMAIN}.
-15.11.16.172        IN  PTR k8s-w2.${SECRET_DOMAIN}.
-16.11.16.172        IN  PTR k8s-w3.${SECRET_DOMAIN}.
+1.11.16.172         IN  PTR san.monosense.io.
+2.11.16.172         IN  PTR csi.monosense.io.
+4.11.16.172         IN  PTR m910q01.monosense.io.
+5.11.16.172         IN  PTR m910q02.monosense.io.
+6.11.16.172         IN  PTR m910q03.monosense.io.
+7.11.16.172         IN  PTR m920x01.monosense.io.
+8.11.16.172         IN  PTR m920x02.monosense.io.
+10.11.16.172        IN  PTR k8s-m0.monosense.io.
+11.11.16.172        IN  PTR k8s-m1.monosense.io.
+12.11.16.172        IN  PTR k8s-m2.monosense.io.
+13.11.16.172        IN  PTR k8s-w0.monosense.io.
+14.11.16.172        IN  PTR k8s-w1.monosense.io.
+15.11.16.172        IN  PTR k8s-w2.monosense.io.
+16.11.16.172        IN  PTR k8s-w3.monosense.io.
 
 ; HOME
 ; start from .100-199
-248.12.16.172       IN  PTR smarthub.${SECRET_DOMAIN}.
-100.12.16.172       IN  PTR printer.${SECRET_DOMAIN}.
+248.12.16.172       IN  PTR smarthub.monosense.io.
+100.12.16.172       IN  PTR printer.monosense.io.
 
 ; IoT
 ; start from .100-199
-1.13.16.172         IN   PTR hassio.${SECRET_DOMAIN}.
-100.13.16.172       IN   PTR em00.${SECRET_DOMAIN}.
-101.13.16.172       IN   PTR em01.${SECRET_DOMAIN}.
-102.13.16.172       IN   PTR em02.${SECRET_DOMAIN}.
-103.13.16.172       IN   PTR em03.${SECRET_DOMAIN}.
-104.13.16.172       IN   PTR em04.${SECRET_DOMAIN}.
-105.13.16.172       IN   PTR em05.${SECRET_DOMAIN}.
-106.13.16.172       IN   PTR office-ups1-plug.${SECRET_DOMAIN}.
-107.13.16.172       IN   PTR office-ups2-plug.${SECRET_DOMAIN}.
-108.13.16.172       IN   PTR office-ups3-plug.${SECRET_DOMAIN}.
-109.13.16.172       IN   PTR backyard-water-pump-plug.${SECRET_DOMAIN}.
-110.13.16.172       IN   PTR backyard-booster-pump-plug.${SECRET_DOMAIN}.
-111.13.16.172       IN   PTR masterbedroom-plug.${SECRET_DOMAIN}.
-112.13.16.172       IN   PTR farezzbedroom-plug.${SECRET_DOMAIN}.
-113.13.16.172       IN   PTR office-rack-fans-plug.${SECRET_DOMAIN}.
-114.13.16.172       IN   PTR guestroom-led-strip.${SECRET_DOMAIN}.
+1.13.16.172         IN   PTR hassio.monosense.io.
+100.13.16.172       IN   PTR em00.monosense.io.
+101.13.16.172       IN   PTR em01.monosense.io.
+102.13.16.172       IN   PTR em02.monosense.io.
+103.13.16.172       IN   PTR em03.monosense.io.
+104.13.16.172       IN   PTR em04.monosense.io.
+105.13.16.172       IN   PTR em05.monosense.io.
+106.13.16.172       IN   PTR office-ups1-plug.monosense.io.
+107.13.16.172       IN   PTR office-ups2-plug.monosense.io.
+108.13.16.172       IN   PTR office-ups3-plug.monosense.io.
+109.13.16.172       IN   PTR backyard-water-pump-plug.monosense.io.
+110.13.16.172       IN   PTR backyard-booster-pump-plug.monosense.io.
+111.13.16.172       IN   PTR masterbedroom-plug.monosense.io.
+112.13.16.172       IN   PTR farezzbedroom-plug.monosense.io.
+113.13.16.172       IN   PTR office-rack-fans-plug.monosense.io.
+114.13.16.172       IN   PTR guestroom-led-strip.monosense.io.
 
 ; CCTV
 ; start from .100-199
-2.14.16.172         IN  PTR nvr.${SECRET_DOMAIN}.
-101.14.16.172       IN  PTR ipc01.${SECRET_DOMAIN}.
-102.14.16.172       IN  PTR ipc02.${SECRET_DOMAIN}.
-103.14.16.172       IN  PTR ipc03.${SECRET_DOMAIN}.
-104.14.16.172       IN  PTR ipc04.${SECRET_DOMAIN}.
-105.14.16.172       IN  PTR ipc05.${SECRET_DOMAIN}.
+2.14.16.172         IN  PTR nvr.monosense.io.
+101.14.16.172       IN  PTR ipc01.monosense.io.
+102.14.16.172       IN  PTR ipc02.monosense.io.
+103.14.16.172       IN  PTR ipc03.monosense.io.
+104.14.16.172       IN  PTR ipc04.monosense.io.
+105.14.16.172       IN  PTR ipc05.monosense.io.
 
 ; CONTAINERS
-2.16.16.172         IN  PTR adguard.${SECRET_DOMAIN}.
-3.16.16.172         IN  PTR ns1.${SECRET_DOMAIN}.
-4.16.16.172         IN  PTR prod.${SECRET_DOMAIN}.
-5.16.16.172         IN  PTR ns.${SECRET_DOMAIN}.
-6.16.16.172         IN  PTR omada.${SECRET_DOMAIN}.
-7.16.16.172         IN  PTR onepassword-connect.${SECRET_DOMAIN}.
-8.16.16.172         IN  PTR onepassword-sync.${SECRET_DOMAIN}.
+2.16.16.172         IN  PTR adguard.monosense.io.
+3.16.16.172         IN  PTR ns1.monosense.io.
+4.16.16.172         IN  PTR prod.monosense.io.
+5.16.16.172         IN  PTR ns.monosense.io.
+6.16.16.172         IN  PTR omada.monosense.io.
+7.16.16.172         IN  PTR onepassword-connect.monosense.io.
+8.16.16.172         IN  PTR onepassword-sync.monosense.io.

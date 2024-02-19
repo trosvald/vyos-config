@@ -133,7 +133,7 @@ set container name smtp-relay volume smtp-relay-config source '/config/container
 # Cloudflare DDNS
 set container name cloudflare-ddns allow-host-networks
 set container name cloudflare-ddns environment CF_API_TOKEN value "${SECRET_CLOUDFLARE_DYNDNS_TOKEN}"
-set container name cloudflare-ddns environment DOMAINS value "${SECRET_CF_CNAME}"
+set container name cloudflare-ddns environment DOMAINS value "${SECRET_CF_CNAME1}"
 set container name cloudflare-ddns environment IP4_PROVIDER value 'local'
 set container name cloudflare-ddns environment IP6_PROVIDER value 'none'
 set container name cloudflare-ddns environment PGID value '1000'

@@ -1,10 +1,9 @@
 #!/bin/vbash
 # shellcheck shell=bash
-# shellcheck source=/dev/null
 dry_run=true
 
-if [[ "$(id -g -n)" != 'vyattacfg' ]] ; then
-    exec sg vyattacfg -c "/bin/vbash $(readlink -f "$0") $*"
+if [ "$(id -g -n)" != 'vyattacfg' ] ; then
+  exec sg vyattacfg -c "/bin/vbash $(readlink -f "$0") $*"
 fi
 
 while getopts "c" options; do
@@ -22,7 +21,7 @@ while getopts "c" options; do
 done
 
 # Load secrets into ENV vars
-if [[ -f "/config/secrets.sops.env" ]]; then
+if [ -f "/config/secrets.sops.env" ]; then
   export SOPS_AGE_KEY_FILE=/config/secrets/age.key
 
   mapfile environmentAsArray < <(
@@ -41,23 +40,23 @@ while IFS= read -r -d '' file
 do
   cfgfile="${file%.tmpl}"
 
-  shafile="${file}.sha256"
-  if ! test -e "${shafile}"; then
-    echo "rebuild" >"${shafile}"
+  shafile=$file.sha256
+  if ! test -e "$shafile"; then
+    echo "rebuild" >"$shafile"
   fi
 
-  newsha=$(envsubst <"${file}" | shasum -a 256 | awk '{print $1}')
-  oldsha=$(cat "${shafile}")
+  newsha=$(envsubst <"$file" | shasum -a 256 | awk '{print $1}')
+  oldsha=$(cat "$shafile")
 
-  if ! test "${newsha}" == "${oldsha}"; then
-    echo "Configuration changed for ${file}"
-    if ! "${dry_run}"; then
-      envsubst <"${file}" >"${cfgfile}"
-      echo "${newsha}" >"${shafile}"
-      restart_containers="${restart_containers} $(echo "${file}" | awk -F / '{print $1}')"
+  if ! test "$newsha" == "$oldsha"; then
+    echo "Configuration changed for $file"
+    if ! "$dry_run"; then
+      envsubst <"$file" >"$cfgfile"
+      echo "$newsha" >"$shafile"
+      restart_containers="$restart_containers $(echo "$file" | awk -F / '{print $2}')"
     fi
   fi
-done < <(find containers -type f -name "*.tmpl" -print0)
+done < <(find containers -type f -name "*.tmpl" ! -name "*.bootstrap.tmpl" -print0)
 
 while IFS= read -r -d '' file
 do
@@ -84,24 +83,24 @@ do
 done < <(find containers -type f -print0)
 
 # Include VyOS specific functions and aliases
+# shellcheck source=/dev/null
 source /opt/vyatta/etc/functions/script-template
 
 # Reset the configuration
-
+load /opt/vyatta/etc/config.boot.default
 
 # Load all config files
 for f in /config/config-parts/*.sh; do
-  if [[ -f "${f}" ]]; then
+  if [ -f "${f}" ]; then
     echo "Processing ${f}"
+    # shellcheck source=/dev/null
     source "${f}"
   fi
 done
 
-echo "Changes to running config:"
-compare
-
-if "${dry_run}"; then
-  exit 0
+if "$dry_run"; then
+  # Show what's different from the running config
+  compare
 else
   # Pull new container images
   mapfile -t AVAILABLE_IMAGES < <(run show container image | awk '{ if ( NR > 1  ) { print $1 ":" $2} }')
@@ -133,9 +132,12 @@ else
     fi
   done
 
+  # Remove duplicates containers to restart
+  restart_containers=$(echo "$restart_containers" | tr ' ' '\n' | sort -u | tr '\n' ' ')
+
   # Restart containers
-  for container in ${restart_containers}; do
-    run restart container "${container}"
+  for container in $restart_containers; do
+    run restart container "$container"
   done
 fi
 
