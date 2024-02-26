@@ -43,7 +43,7 @@ set container name bind volume zones source '/config/containers/bind/config/zone
 
 # HAPROXY
 set container name haproxy-k8s-api environment TZ value 'Asia/Jakarta'
-set container name haproxy-k8s-api image 'docker.io/library/haproxy:2.9.5'
+set container name haproxy-k8s-api image 'docker.io/library/haproxy:2.9.6'
 set container name haproxy-k8s-api memory '0'
 set container name haproxy-k8s-api network containers address '172.16.16.4'
 set container name haproxy-k8s-api restart 'on-failure'
